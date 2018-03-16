@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc --reporter=html --reporter=text mocha --recursive",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/AGrzes/yellow-config/issues"
   },
-  "homepage": "https://github.com/AGrzes/yellow-config#readme"
+  "homepage": "https://github.com/AGrzes/yellow-config#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "mocha": "^5.0.4",
+    "nyc": "^11.6.0"
+  }
 }
