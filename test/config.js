@@ -20,4 +20,9 @@ describe('config', () => {
       default: 'default'
     })).to.have.property('property', 'yellow')
   })
+  it('Should load config from ancestor dir', function () {
+    expect(config('/1/2/3/4',{
+      default: 'default'
+    })).to.have.property('property', 'yellow')
+  })  
 })
