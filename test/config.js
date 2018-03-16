@@ -6,7 +6,9 @@ describe('config', () => {
   before(() => {
     mock({
       '/1/2/.yellow.json': '{"property":"yellow"}',
-      '/1/2/3/4': {}
+      '/1/2/3/4': {},
+      '/A/B/.yellow.yaml': 'property: yellow',
+      '/C/D/E/F': {}
     })
   })
   after(() => mock.restore())
@@ -20,7 +22,7 @@ describe('config', () => {
       default: 'default'
     })).to.have.property('default', 'default')
   })
-  it('Should load config', function () {
+  it('Should load config (json)', function () {
     expect(config('/1/2/',{
       default: 'default'
     })).to.have.property('property', 'yellow')
@@ -29,5 +31,10 @@ describe('config', () => {
     expect(config('/1/2/3/4',{
       default: 'default'
     })).to.have.property('property', 'yellow')
-  })  
+  })
+  it('Should load config (yaml)', function () {
+    expect(config('/A/B/',{
+      default: 'default'
+    })).to.have.property('property', 'yellow')
+  })
 })
