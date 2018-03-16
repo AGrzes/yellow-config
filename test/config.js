@@ -8,7 +8,7 @@ describe('config', () => {
       '/1/2/.yellow.json': '{"property":"yellow"}',
       '/1/2/3/4': {},
       '/A/B/.yellow.yaml': 'property: yellow',
-      '/C/D/E/F': {}
+      '/A/B/C/D': {}
     })
   })
   after(() => mock.restore())
@@ -27,13 +27,18 @@ describe('config', () => {
       default: 'default'
     })).to.have.property('property', 'yellow')
   })
-  it('Should load config from ancestor dir', function () {
+  it('Should load config (json) from ancestor dir', function () {
     expect(config('/1/2/3/4',{
       default: 'default'
     })).to.have.property('property', 'yellow')
   })
   it('Should load config (yaml)', function () {
     expect(config('/A/B/',{
+      default: 'default'
+    })).to.have.property('property', 'yellow')
+  })
+  it('Should load config (yaml) from ancestor dir', function () {
+    expect(config('/A/B/C/D',{
       default: 'default'
     })).to.have.property('property', 'yellow')
   })
