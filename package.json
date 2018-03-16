@@ -24,5 +24,7 @@
     "mock-fs": "^4.4.2",
     "nyc": "^11.6.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "find-config": "^1.0.0"
+  }
 }
