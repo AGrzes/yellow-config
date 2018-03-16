@@ -11,6 +11,11 @@ describe('config', () => {
   })
   after(() => mock.restore())
   it('Should return defaults', function () {
+    expect(config('/1/',{
+      default: 'default'
+    })).to.have.property('default', 'default')
+  })
+  it('Should keep defaults', function () {
     expect(config('/1/2/',{
       default: 'default'
     })).to.have.property('default', 'default')
